@@ -37,7 +37,7 @@ namespace ConsoleApp1
             }
 
 
-            return Balance - DepositValue;
+            return Balance + DepositValue;
         }
 
         public static void UserInterface()
@@ -60,19 +60,37 @@ namespace ConsoleApp1
 
                 if (choice == 1)
                 {
-                    ViewBalance();
+                    Console.WriteLine("Your Balance : "+ ViewBalance());
+
+                    Console.WriteLine(" ************************************************* ");
+
+
                     Console.WriteLine("  Please choose a number :  ");
                 }
                 else if (choice == 2)
                 {
+                    Console.WriteLine("Your Balance before Withdraw : " + ViewBalance());
 
-                    Withdraw(10);
+                    Console.WriteLine(" ------------------------------------------------- ");
+
+                    Console.WriteLine("Your Balance after Withdraw : " + Withdraw(10));
+
+                    Console.WriteLine(" ************************************************* ");
+
+
                     Console.WriteLine("  Please choose a number :  ");
                 }
                 else if (choice == 3)
                 {
 
-                    Deposit(10);
+                    Console.WriteLine("Your Balance before Deposit : " + ViewBalance());
+
+                    Console.WriteLine(" ------------------------------------------------- ");
+
+                    Console.WriteLine("Your Balance after Deposit : " + Deposit(10));
+
+                    Console.WriteLine(" ************************************************* ");
+
                     Console.WriteLine("  Please choose a number :  ");
                 }
 
