@@ -6,38 +6,62 @@ namespace ConsoleApp1
     {
         static public decimal Balance = 100;
 
+        
+        static public decimal ReadLines(){
+
+            Console.WriteLine(" Please Enter Withdraw / Deposite value ");
+            decimal value = Convert.ToInt32(Console.ReadLine());
+
+            return value; 
+                
+        }
+
+
         static public decimal ViewBalance()
         {
 
             return Balance;
         }
 
-        static public decimal Withdraw(decimal withdrawValue)
+        static public decimal Withdraw()
         {
-
-            if ( withdrawValue > Balance)
+            
+            
+                decimal withDrawValue = ReadLines();
+            try { }
+            catch (IndexOutOfRangeException e)
             {
+                if (withDrawValue > Balance)
+                {
 
-                throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Withdraw Value is bigger than Balance , Please Enter a correct value !", e);
+                }
+
+
+                if (withDrawValue < 0)
+                {
+
+                    throw new IndexOutOfRangeException("Withdraw Value is less than ZERO , Please Enter a correct value !", e);
+                }
             }
-
-            if (withdrawValue < 0)
-            {
-
-                throw new ArgumentOutOfRangeException();
-            }
-            return Balance - withdrawValue;
+            
+            return Balance - withDrawValue;
         }
 
-        static public decimal Deposit(decimal DepositValue)
+        static public decimal Deposit()
         {
-            if (DepositValue < 0)
-            {
-                throw new ArgumentOutOfRangeException();
+
+            decimal depositValue = ReadLines();
+            try { }
+            catch (IndexOutOfRangeException e) {
+                if (depositValue < 0)
+                {
+                    throw new IndexOutOfRangeException("Deposit Value is less than ZERO , Please Enter a correct value !", e);
+                }
             }
 
 
-            return Balance + DepositValue;
+            return Balance + depositValue;
         }
 
         public static void UserInterface()
@@ -73,7 +97,7 @@ namespace ConsoleApp1
 
                     Console.WriteLine(" ------------------------------------------------- ");
 
-                    Console.WriteLine("Your Balance after Withdraw : " + Withdraw(10));
+                    Console.WriteLine("Your Balance after Withdraw : " + Withdraw());
 
                     Console.WriteLine(" ************************************************* ");
 
@@ -87,11 +111,17 @@ namespace ConsoleApp1
 
                     Console.WriteLine(" ------------------------------------------------- ");
 
-                    Console.WriteLine("Your Balance after Deposit : " + Deposit(10));
+                    Console.WriteLine("Your Balance after Deposit : " + Deposit());
 
                     Console.WriteLine(" ************************************************* ");
 
                     Console.WriteLine("  Please choose a number :  ");
+
+                   
+                }
+                else if (choice == 4)
+                {
+                    Console.WriteLine(" Exit out of Program ! ");
                 }
 
             }
